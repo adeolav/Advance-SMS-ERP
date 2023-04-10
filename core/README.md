@@ -17,3 +17,11 @@ The Project schedule activities will consist of following:
 ⦁	Testing of the Application
 
 ⦁	Deployment
+
+Operating Environment
+The operating environment for School ERP system are listed below:
+
+⦁	Operating System: Windows 10
+⦁	Database: MySQL database
+⦁	Front end: HTML/CSS/Bootstrap
+⦁	Back end: Django
