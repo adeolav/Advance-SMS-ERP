@@ -1,0 +1,9 @@
+Django
+django-jazzmin
+djangorestframework
+gunicorn
+crispy-bootstrap5
+django-crispy-forms
+django-betterforms
+django-mapbox-location-field
+django-ckeditor
