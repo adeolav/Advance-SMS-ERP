@@ -135,8 +135,8 @@ The head of department is a part of the teaching staff but has special privilege
 
 Technical staff
 The technical staff provide technical support to the teaching staff. This includes technical support in laboratories such as maintaining the functioning of computers in labs, maintaining the equipment in their respective departments. Unlike the teaching staff, they do not conduct classes. Their role in the ERP system is to provide support to other staff through communication. Also, they have the feature to avail for leave just like the teachers.
- 
 
+[draw.io] img 1
 
 ⦁	Students
 Students are another class of end user. In the ERP system, students can view information regarding their attendance status, internals marks, Semester end examination marks, notifications from the School administration etc.  A    student  expects  the  ERP  system  to  be   aesthetic and functional. A student should only be able to view information about himself.
@@ -194,3 +194,224 @@ The administrator should have the following features:
 
 ⦁	Add and update students, teachers and courses.
 ⦁	Assign teachers and students to courses
+
+
+Chapter 3
+
+System Design
+
+Various Design concepts and processes were applied to this project. Following concepts like separation of concerns, the software is divided into individual modules that are functionally independent and in- corporates information hiding. The software is divided into 4 modules which are students, parents, teachers and administrators. We shall look at each module in detail.
+
+⦁	Student
+Each student belongs to a class identified by semester and section. Each class belongs to a department and are assigned a set of courses. Therefore, these courses are common to all students of that class. The students are given a unique username and password to login. Each of them will have a different view. These views are described below.
+Student information
+Each student can view only their own personal information. This includes their personal details like name, phone no, address etc. Also, they can view the courses they are enrolled in and the attendance, marks of each of those.
+Attendance information
+Attendance for each course will be displayed. This includes the number of attended classes and the attendance percentage. If the attendance percentage if below a specified threshold, say 75%, It will be marked in red otherwise it be in green. This will be presented in a calendar format.
+Marks information
+There will be tests and 1 semester end examination for each course. The marks for each of these will be provided in the ERP system.
+Notifications and events
+This section is common to all students and parents. Notification are messages from the admin such as declaration of holidays, test time-table etc. The events and their details are specified here.
+
+⦁	Parents
+Each parent belongs to a class identified by semester and section. Each class belongs to a department and are assigned a set of courses. Therefore, these courses are common to all students of that class. The students are given a unique username and password to login. Each of them will have a different view. These views are described below.
+Parents information
+Each parent can view only their own personal information. This includes their personal details like name, phone no, address etc. Also, they can view  their children informationthe courses they are enrolled in and the attendance, marks of each of those.
+ Payment information
+Pay online, get payment invoice, 
+Notifications and events
+This section is common to all students and parents. Notification are messages from the admin such as declaration of holidays, test time-table etc. The events and their details are specified here.
+
+
+⦁	Teacher
+Each teacher belongs to a department and are assigned to classes with a course. Teachers will also have a username and password to login. The different views for teachers are described below.
+Information
+The teachers will have access to information regarding the courses and classes they are assigned to. Details of the courses include the credits, the syllabus plan. Details of the class include the department, semester, section and the list of students in each class. The teacher will also have access to information of students who belong to the same class as the teacher.
+
+Attendance
+The teacher has the ability to add and also edit the attendance of each student. For entering the attendance, they will be given the list of students in each class and they can enter the attendance of the whole class on a day to day basis. There will be two radio buttons next to each student name, one for present and the other for absent. There will also be an option for extra classes. Teachers can edit the attendance of each student either for each student individually or for the whole class.
+Marks
+The teacher can enter the marks for tests and 1 SEE for each course they are assigned. They also have the ability to edit the marks in case of any changes. Reports such as the report card including all the marks and CGPA of a student can be generated.
+
+⦁	Administrator
+The administrator will have access to all the information in the different tables in the database. They will access to all the tables in a list form. They will be able to add entry in any table and also edit them. The design of the view for the admin will provide a modular interface so that querying the tables will be optimized. They will be provided with search and filter features so that they can access data efficiently.
+
+⦁	Class Diagram
+The class diagram states the different classes involved in the software. For each class, a set of attributes and method are included. The relationship between the classes are also specified. For example, the teacher class has the attributes Id, name, phone no, address and methods such as marking attendance, declaring marks and preparing report cards. Each instance of the teacher class belongs to a department. This is specified by the relationship between Teacher and Department classes.
+
+
+
+
+Figure 2.1: Class diagram of School ERP
+
+⦁	Entity Relationship Diagram
+
+
+
+Figure 2.2: Entity Relationship diagram of School ERP
+
+Chapter 4
+
+System Implementation
+The School ERP system has three main user classes. These include the students, teachers and administrator. This section will explain in detail all the features and the working of those for each user class.
+
+⦁	Student
+
+⦁	Login
+Each student in the School is assigned a unique username and password by the administrator. The user- name is the same as their USN and so is the password. They may change it later according to their wish.
+
+
+
+Figure 3.1: Student Login Page
+
+
+⦁	Homepage
+After successful login, the student is presented a homepage with their main sections, attendance, marks and timetable. In the attendance section the student can view their attendance status which includes the total classes, attended classes and the attendance percentage for each of their courses.
+In the marks section, the student can view the marks for each of their courses internal assessments. Also, the semester end examination for 100 marks. Lastly, the timetable provides the classes assigned to that student and day and time of each in a tabular form.
+
+
+
+Figure 3.2: Student Home Page
+
+
+⦁	Attendance
+On the attendance page, there is a list of courses that is dependent on each student. For each course, the course id and name are display along with the attended classes, total classes and the attendance percentage for that particular course. If the attendance percentage is below 75 for any course, it is displayed in red denoting shortage of attendance, otherwise it is green. If there is any shortage, it specifies the number of classes to attend to make up for it. If you click on each course, it takes you to the attendance detail page.
+
+Attendance Detail
+This page displays more details for the attendance in each course. For each the course, there is a list of classes conducted and each is marked with the date, day and whether the student was present or absent on that particular date.
+
+
+Figure 3.3: Student Attendance Page
+Figure 3.4: Student Attendance Detail Page
+
+
+
+
+⦁	Marks
+The Marks page is a table with an entry for each of their courses. The course id and name are specified along the marks obtained in each of the tests and exams. The tests include internal assessments with marks obtained, tests, quiz etc. Lastly, one semester end exam with marks out of 100.
+
+
+
+Figure 3.5: Student Marks Page
+
+
+⦁	Timetable
+
+This page is a table which lists the day and timings of each of the classes assigned to the student. The row headers are the days of the week and the column headers are the time slots. So, for each day, it specifies the classes in the time slots. The timetable is generated automatically from the assign table, which is a table containing the information of all the teachers assigned to a class with a course and the timings the classes.
+
+
+Figure 3.6: Student Timetable
+
+⦁	Teacher
+⦁	Login
+Each teacher in the School is assigned a unique username and password by the administrator. The username is their teacher ID and the same for password. The teacher may change the password later.
+
+
+Figure 3.7: Teacher Login
+
+
+⦁	Homepage
+After successful login, the teacher is presented a homepage with their main sections, attendance, marks, timetable and reports. In the attendance section, the teacher can enter the attendance of their respective students for the days on which classes were conducted. There is a provision to enter extra classes and view/edit the attendance of each individual student. In the marks section, the teacher may enter the marks for internal assessments, tests, quiz etc. for each student. They can also edit each of the entered marks. The timetable provides the classes assigned to the teacher with the day and timings in a tabular form. Lastly, the teacher can generate reports for each of their assigned class.
+
+⦁	Attendance
+There is a list of all the class assigned to teacher. So, for each class there are 3 actions available. They are,
+
+Enter Attendance
+On this page, the classes scheduled or conducted is listed in the form of a list. Initially, all the scheduled classes will be listed from the start of the semester to the current date. Thus, if  there is class scheduled for  today, it  will  automatically  appear on top of  the list. If   the   attendance of any day is not marked it will be red, otherwise green if marked. Classes can also be cancelled which will make that date as yellow. While entering the attendance, the list of students in that class is listed and there are two options next to each. 
+
+Figure 3.8:  Teacher homepage
+
+
+These options are in the form of a radio button for present and absent. All the buttons are initially marked as present and the teacher just needs to change for the absent students.
+Figure 3.9: Entering attendance
+
+Edit Attendance
+After entering attendance, the teacher can also edit it. It is similar to screen for entering attendance, only the entered attendance is saved and display. The teacher can change the appropriate attendance and save it.
+Figure 3.10: Editing attendance
+
+Student Attendance
+For each assigned class, the teacher can view the attendance status of the list of students. The number of attended classes, total number of classes conducted and the attendance percentage is displayed. If the attendance percentage of any of the students is below 75, it will be displayed in red. Thus, the teacher may easily find the list of students not eligible to take a test.
+
+Student Attendance Details
+The teacher can view the attendance detail of all their assigned students individually. That is, for all the conducted classes, it will display whether that student was present or absent. The teacher can also edit the attendance of each student individually by changing the attendance status for each conducted class.
+
+Figure 3.11: Attendance of students in a class
+
+Figure 3.12: Attendance details of an individual student
+
+⦁	Marks
+On this page, the list of classes assigned to the teacher are displayed along with two actions for each class. These actions are,
+
+
+Enter Marks
+On this page, the teacher can enter the marks. Initially all of them are marked red to denote that the marks have not been entered yet. Once the marks for a test is entered, it turns green. While entering the marks for a particular test, the list of students in that class is listed and marks can be entered for all of them and submitted. Once, the marks are submitted, the students can view their respective marks. Incase if there is a need to change the marks of any student, it is possible to edit the marks.
+
+Figure 3.13:  Entering marks
+Edit Marks
+Marks for a test can be edited. While editing, the list of students in that class is displayed along with already entered marks. The marks to be updated can be changed and submitted. The students can view this change immediately.
+
+Student Marks
+For each assigned class, the teacher has access to the list of students and the marks they obtained in all the tests. This is displayed in a tabular form.
+
+⦁	Timetable
+This page is a table which lists the day and timings of each of the classes assigned to the teacher. The row headers are the days of the week and the column headers are the time slots. So, for each day, it specifies the classes in the time slots. The timetable is generated automatically from the assign table, which is a table containing the information of all the teachers assigned to a class with a course and the timings the classes.
+
+
+Figure 3.14: Editing marks
+
+Figure 3.15: Marks of all the students in a class
+
+Free teachers
+For each entry in the table, the list of free teachers can be generated. Free teachers are the teachers who assigned to the class and are free for that time slot on that day. This is very useful for the teachers particularly when they are on leave as it helps them find a suitable replacement are that class.
+
+
+Figure 3.16: Teacher Timetable
+
+Figure 3.17: List of free teachers for a time slot
+
+⦁	Reports
+The last page for the teachers is used to generate reports for each class. The report specifies the list of students in that class and their respective CIE and attendance percentage. CIE is the average of the marks obtained from the tests. The CIE is out of 40 and the students with CIE below 20 are marked in red and are not eligible to write the semester end exam. Also, the attendance percentage is displayed with students below 75% marked in red.
+
+Figure 3.18: CIE and attendance for a class of students
+       Administrator
+The administrator is responsible for adding and maintaining all the departments, students, teachers, classes and courses. All this data is stored in the database in their respective tables. The admin is also responsible for adding and maintaining the list of teachers assigned to class with a course and the timings. This information is stored in the Assign table. The admin also has access to the marks and attendance of each student and can modify them.
+
+There are several features in place to ensure that querying the database is quick and efficient for the administrator. As the database has the potential to become huge, there is a search feature for every table including student, teacher etc. The search has g o t a specific record based on name or id. Also, it can filter the record based on department, class etc.
+
+Figure 3.19 shows the homepage for the admin, it lists all the different tables in the database. Figure 3.20 shows the details of the class table. Each class consists of a list of students as shown.
+
+
+Figure 3.19: Admin homepage
+
+Figure 3.20: Admin students table page
+
+Chapter 6
+
+Conclusion
+
+⦁	Conclusion
+By using Existing System accessing information from files is a difficult task and there is no quick and easy way to keep the records of students and staff. Lack of automation is also there in the Existing System. The aim of Our System is to reduce the workload and to save significant staff time.
+
+Tittle of the project as School ERP System is the system that deals with the issues related to a particular institution. It is the very useful to the student as well as the faculties to easy access to finding the details. The School ERP provides appropriate information to users based on their profiles and role in the system. This project is designed keeping in view the  day  to  day  problems  faced  by  a  School   system.
+
+The fundamental problem in maintaining and managing the work by the administrator is hence over- come. Prior to this it was a bit difficult for maintaining the time table and also keeping track of the daily schedule. But by developing this web-based application the administrator can enjoy the task, doing it ease and also by saving the valuable time. The amount of time consumption is reduced and also the manual calculations are omitted, the reports can be obtained regularly and also v i e w  whenever on demand by the user. The effective utilization of the work, by proper sharing it and by providing the accurate results. The storage facility will ease the job of the operator. Thus, the system developed will be helpful to the administrator by easing his/her task.
+
+This System provide the automate admissions no manual processing is required. This is a paperless work. It can be monitored and controlled remotely. It reduces the man power required. It provides accurate information always. All years together gathered information can be saved and can be accessed at any time. The data which is stored in the repository helps in taking intelligent decisions by the management providing the accurate results. The storage facility will ease the job of the operator. Thus, the system developed will be helpful to the administrator by easing his/her task providing  the accurate results.  The storage facility will ease the job of the operator.
+
+This project will be  successfully implemented with all the features and modules of the School management system as per requirements.
+References
+
+⦁	Elmasri and Navathe: Fundamentals of Database Systems, 7th Edition, Pearson Education, 2016.
+⦁	Ian Sommerville: Software Engineering, 10th edition, Person Education Ltd, 2015.
+⦁	Roger S Pressman: Software Engineering- A Practitioners approach,8th edition, McGraw-Hill Publication, 2015.
+⦁	https://en.wikipedia.org/wiki/Requirements-engineering
+⦁	https://web.cs.dal.ca/ hawkey/3130/srs-template-ieee.doc
+⦁	http://www.ntu.edu.sg/home/cfcavallaro/Reports/Report%20writing.htmTop
+⦁	https://en.wikipedia.org/wiki/Class diagram
+⦁	h⦁	ttps://www.djangoproje⦁	ct.com/
+⦁	https://getbootstrap.com/
+⦁	h⦁	ttps://www.tutorialspoin⦁	t.com/
+⦁	https://creately.com/
+⦁	h⦁	ttps://www.ov⦁	erleaf.com/project
+
+
