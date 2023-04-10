@@ -9,6 +9,7 @@ class Department(models.Model):
         return self.name
 
 class ClassInfo(models.Model):
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=45, unique=True)
     display_name = models.CharField(max_length=10, unique=True)
     date = models.DateField(auto_now_add=True)
