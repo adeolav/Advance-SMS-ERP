@@ -47,7 +47,12 @@ INSTALLED_APPS = [
     'django-mapbox-location-field'
     'django-ckeditor'
     # Local apps
+    'App'
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -130,3 +135,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# LOGIN / LOGOUT
+LOGIN_REDIRECT_URL = 'backend'
+LOGOUT_REDIRECT_URL = 'frontend'
