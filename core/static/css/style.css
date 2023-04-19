@@ -1,0 +1,76 @@
+/* --------------------------------------------- 
+# START CONFIGURATION
+--------------------------------------------- */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    max-width: 100%;
+}
+
+/* --------------------------------------------- 
+# FOOTER
+--------------------------------------------- */
+.wrapper {
+    min-height: 100%;
+    margin-bottom: -50px;
+}
+#footer,
+.push {
+    height: 50px;
+}
+
+/* --------------------------------------------- 
+# NAVBAR
+--------------------------------------------- */
+#btn-nav {
+    width: 90px;
+    float: right;
+    margin-right: 25px;
+}
+/*----------------------------------------------
+# SECTIONS
+--------------------------------------------- */
+/*Section (background color) */
+.home{background-color: green;}
+.about{background-color: rgb(15, 139, 223);}
+.courses{background-color: orange;}
+.contact{background-color: blueviolet;}
+
+/* Links in navbar */
+.links{
+    color:white;
+    padding: 10px;
+    text-decoration: none;
+}
+.links:hover{
+    color: greenyellow;
+}
+
+/* Section configuration (body) */
+.sections{
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    text-decoration: none;
+}
+
+/* Tille on sections */
+h2 {
+    font-size: 60px;
+    color: white;
+}
+
+/* Bootstrap active links */
+.active{color: greenyellow;}
+
+/* --------------------------------------------- 
+# LOGIN
+--------------------------------------------- */
+
+/*----------------------------------------------
+# OTHERS
+--------------------------------------------- */
+/*Remove cursor pointer */
+.no-pointer {cursor: default !important;}

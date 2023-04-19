@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+<!-- Block title -->
+{% block title %} Backend {% endblock %}
+
+<!--Nav links control-->
+{% block links %}{% endblock %}
+
+<!-- Logout button -->
+{% block nav-btn %}
+<a class="btn btn-outline-danger btn-sm text-light" id="btn-nav" data-bs-toggle="modal" data-bs-target="#logout">Log out</a>
+{% endblock %}
+
+<!-- Block footer -->
+{% block footer %} style="color: #ff7f7f;" {% endblock %}
+
+<!-- Block navbar content -->
+{% block nav-content %}
+<i class="fa-solid fa-unlock-keyhole"></i>&nbsp;&nbsp; Admininstration
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+<br>
+    <div class="container mt-5">
+        <!----Links-->
+        <button class="btn btn-warning w-100 mt-4 no-poiter">&nbsp;&nbsp;
+            <i class="fas fa-tools"></i> CONTROL PANEL
+        </button>
+        <div class="card p-3 mt-2">
+            <div class="row">
+                {% include 'components/cards/allcards.html' %}
+            </div>
+        </div> 
+
+        <!-- Section 2 -->
+    </div><!-- END // container -->
+
+{% endblock content %}
